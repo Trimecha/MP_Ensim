@@ -1,0 +1,8 @@
+#include "../src/Dvector.h"
+using namespace std; 
+// On teste la construction à partir d'un fichier
+int main(int argc, char* argv[]) {
+	Dvector V4 = Dvector(3, 5.);
+	cout<<" valeur \n" << V4(1) ;
+    return 0;
+}

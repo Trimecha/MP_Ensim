@@ -1,0 +1,8 @@
+Différence entre les écritures :	
+	+	Dvector x;
+		x = Dvector (3, 1.);
+	+	Dvector x = Dvector (3, 1.);
+
+	--> Avec la première écriture, on construit d'abord une instance de Dvector en utilisant le constructeur par défaut (en effet il ne s'agit pas d'une simple déclaration). Ensuite, on appelle le constructeur (avec initialisatin) sur la meme instance, x. Ainsi, le destructeur sera appellé deux fois (automatiquement à la fin du programme) sur la meme instance. D'où le message d'erreur, "double free or corruption", renvoyée à l'execution.
+		Par ailleurs, en utilisant la deuxième écriture, on construit une instance de Dvector en utilisant le constructeur avec initialisation. Le destructeur 
+	est appellé une seule fois, à la fin du programme, sans lever d'erreur. 

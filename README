@@ -1,0 +1,17 @@
+
+Rendu:  
+	* Documentation (repertoire doc) 
+    * Sources (src/Dvector.cpp, src/Dvector.h) 
+	* Fichiers test (repertoire test (un fichier test pour chaque question))
+	* analyse.txt	 
+	* Makefile
+
+Makefile:
+	Pour compiler : (creer le repertoire bin puis construire l'objet bin/Dvector.ole et l'executable de chaque fichier test)
+		make
+	Pour compiler et executer les tests :
+		make check
+	Pour generer la documentation
+		make doc
+	Pour netoyer les binaires:
+		make clean
