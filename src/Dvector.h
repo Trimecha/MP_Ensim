@@ -57,17 +57,48 @@ class Dvector {
      *  Retourner la dimension du vecteur
      *  \return La dimension du vecteur
     */
-  	int size();
+  	int size() const {return dim;};
     /**
      *  Remplir le vecteur aléatoirement par des valeurs dans l'intervalle [0,1]
      *  \return La dimention du vecteur
     */
   	int fillRandomly();
     /**
-     *  Remplir le vecteur aléatoirement par des valeurs dans l'intervalle [0,1]
-     *  \return La dimention du vecteur
+     *  Retourne l'element du vecteur d'indice d
+     *  \param d: indice de l'element
+     *  \return element du vecteur d'indice d
     */
         double &operator()(int d);
 };
+
+ /**
+     *  Retourne un Dvector dont les elements sont la somme d'un element de v et du reel r 
+     *  \param r: element pour la somme
+     *  \param v: vecteur à sommer
+     *  \return un vecteur de meme dimension que v
+    */
+        Dvector operator+(double const &r , Dvector const &v);
+    /**
+     *  Retourne un Dvector dont les elements sont la soustraction d'un element de v et du reel r 
+     *  \param r: element pour la soustraction
+     *  \param v: vecteur à soustraire
+     *  \return un vecteur de meme dimension que v
+    */
+        Dvector operator-(Dvector const &v , double const &r);   
+     /**
+     *  Retourne un Dvector dont les elements sont la multiplication d'un element de v et du reel r 
+     *  \param r: element pour la multiplication
+     *  \param v: vecteur à multiplier
+     *  \return un vecteur de meme dimension que v
+     */   
+        Dvector operator*(double const &r , Dvector const &v);
+     /**
+     *  Retourne un Dvector dont les elements sont la division d'un element de v sur un reel r 
+     *  \param r: element pour la division
+     *  \param v: vecteur à diviser
+     *  \return un vecteur de meme dimension que v
+     */ 
+        Dvector operator/(Dvector const &v , double const &r);
+
 
 #endif

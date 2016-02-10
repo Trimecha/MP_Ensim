@@ -5,10 +5,11 @@ SRC = $(SRCDIR)/Dvector.cpp $(SRCDIR)/Dvector.h
 SRC_FILES = $(wildcard $(SRCDIR)/*.cpp)
 OBJ_FILES = $(patsubst $(SRCDIR)/%.cpp, $(BINDIR)/Dvector.o, $(SRC))
 
+
 CXX = g++
 CXXFLAGS = -Wall -g -pedantic
 
-all: $(BINDIR) $(BINDIR)/Dvector.o $(BINDIR)/Test1 $(BINDIR)/Test2 $(BINDIR)/Test3 
+all: $(BINDIR) $(BINDIR)/Dvector.o $(BINDIR)/Test1 $(BINDIR)/Test2 $(BINDIR)/Test3 $(BINDIR)/operateur.o 
 
 #-------------------------------------------------------------------------------------------------------------#
 $(BINDIR):
@@ -16,6 +17,9 @@ $(BINDIR):
 
 #-------------------------------------------------------------------------------------------------------------#
 $(BINDIR)/Dvector.o: $(SRC)
+	$(CXX) -c $(CXXFLAGS) $< -o $@
+
+$(BINDIR)/operateur.o: src/operateur.cpp src/operateur.h
 	$(CXX) -c $(CXXFLAGS) $< -o $@
 
 #-------------------------------------------------------------------------------------------------------------#
@@ -47,7 +51,7 @@ $(BINDIR)/Test1: $(OBJ_FILES) $(TESTDIR)/Test1.cpp
 	$(CXX) -g $^ -o $@
 $(BINDIR)/Test2: $(OBJ_FILES) $(TESTDIR)/Test2.cpp
 	$(CXX) -g $^ -o $@
-$(BINDIR)/Test3: $(OBJ_FILES) $(TESTDIR)/Test3.cpp
+$(BINDIR)/Test3: $(OBJ_FILES) $(TESTDIR)/Test3.cpp $(BINDIR)/operateur.o
 	$(CXX) -g $^ -o $@
 
 #-------------------------------------------------------------------------------------------------------------#

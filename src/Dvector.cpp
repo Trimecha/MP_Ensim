@@ -20,24 +20,24 @@ Dvector::Dvector(int d)
         dim=d; 
         if (dim != 0){
                 vector=new double[dim];
-                cout<<"Construction d'un vecteur sans initialisation\n";
+                //cout<<"Construction d'un vecteur sans initialisation\n";
         }
         else{
                 vector = NULL ;
-                cout<<"Construction d'un vecteur vide\n";
+                //cout<<"Construction d'un vecteur vide\n";
         }
 }
 
 Dvector::Dvector(int d,double v)
-{	
+{       
         dim=d;
         if (dim != 0) {
                 vector=new double[dim];
-                cout<<"Construction d'un vecteur avec initialisation\n";  
+                //cout<<"Construction d'un vecteur avec initialisation\n";  
         }
         else {
                 vector = NULL ;
-                cout<<"Construction d'un vecteur vide\n";
+                //cout<<"Construction d'un vecteur vide\n";
         }
         for (int i=0;i<dim;i++)
                 vector[i]=v;
@@ -49,7 +49,7 @@ Dvector::Dvector(const Dvector & V)
         vector=new double[dim];
         for(int i=0;i<dim;i++)
                 vector[i]=V.vector[i];
-        cout<<"Construction d'un vecteur par recopie\n";       
+        //cout<<"Construction d'un vecteur par recopie\n";       
 }
 
 Dvector::Dvector(std::string fichier){
@@ -77,7 +77,7 @@ Dvector::Dvector(std::string fichier){
                         index++;
                 }
                 file.close();  
-                cout<<"Construction d'un vecteur à partir d'un fichier\n";  
+                //cout<<"Construction d'un vecteur à partir d'un fichier\n";  
         }
         else  {
                 cerr << "Impossible d'ouvrir le fichier !" << endl << "Construction d'un vecteur de taille nulle\n";
@@ -87,20 +87,20 @@ Dvector::Dvector(std::string fichier){
 }
 
 Dvector::~Dvector() {
-        cout<<"Destruction d'un vecteur\n";
+        //cout<<"Destruction d'un vecteur\n";
         if (vector != NULL)
                 delete[] vector; 
 }
 
 void Dvector::display(std::ostream& str)
-{	
+{       
         if (dim==0)
                 cout<<"Le vecteur est vide\n";
         for (int i=0;i<dim;i++)
                 str<<vector[i]<<"\n";
 }
 
-int Dvector::size() { return dim; }
+//int Dvector::size() { return dim; }
 
 int Dvector::fillRandomly()
 {
@@ -120,66 +120,4 @@ double &Dvector::operator()(int d) {
         }
 }
 
-Dvector &Dvector::operator +(double r , Dvector v){
-        if (v.dim == 0){
-                return NULL ;
-        }
-        else if (r == 0) {
-                return v ;
-        }
-        else {
-                Dvector vect = new double[v.dim];
-                for (int i=0; i<v.dim ; i++)
-                        vect.vector[i] = v.vector[i] + r ;
-                return(vect) ;
-        }
-}
 
-Dvector &Dvector::operator -(double r , Dvector v){
-        if (v.dim == 0){
-                return NULL ;
-        }
-        else if (r == 0) {
-                return v ;
-        }
-        else {
-                Dvector vect = new double[v.dim];
-                for (int i=0; i<v.dim ; i++)
-                        vect.vector[i] = v.vector[i] - r ;
-                return(vect) ;
-        }
-}
-
-Dvector &Dvector::operator *(double r , Dvector v){
-        if (v.dim == 0){
-                return NULL ;
-        }
-        else if (r == 1) {
-                return v ;
-        }
-        else {
-                Dvector vect = new double[v.dim];
-                for (int i=0; i<v.dim ; i++)
-                        vect.vector[i] = v.vector[i] * r ;
-                return(vect) ;
-        }
-}
-
-Dvector &Dvector::operator /(double r , Dvector v){
-        if (r == 0){
-                cout << "Erreur : Division par zero \n" ;
-                exit(1) ;
-        }
-        else if (v.dim == 0){
-                return NULL ;
-        }
-        else if (r == 1) {
-                return v ;
-        }
-        else {
-                Dvector vect = new double[v.dim];
-                for (int i=0; i<v.dim ; i++)
-                        vect.vector[i] = v.vector[i]/r ;
-                return(vect) ;
-        }
-}
